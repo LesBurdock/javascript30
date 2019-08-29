@@ -1,0 +1,56 @@
+
+
+html{
+background: linear-gradient(#e66465, #9198e5) no-repeat center center fixed;
+text-align:center;
+}
+
+body{
+	display:flex;
+	flex:1;
+	min-height:100vh;
+	align-items:center;
+	
+}
+
+.clockface{
+	border: 30px solid rgba(189, 195, 199, 0.1);
+	background-color: rgba(189, 195, 199, 0.3);
+	border-radius:50%;
+	width: 20rem;
+	height:20rem;
+	position:relative;
+	left: 30vw;
+	display:block;
+	box-shadow: 4px 4px rgba(189, 195, 199, 0.3);
+	
+}
+
+.hand{
+ background-color:rgba(46, 49, 49, 1);
+ width: 50%;
+ height:6px;
+ position:absolute;
+ top:50%;
+ transform-origin: 100%;
+ transform:rotate(90deg);
+ transition-timing-function: ease-in-out; 
+ transition: all 0.05s;
+}
+
+.hour-hand{
+
+}
+
+.min-hand{
+
+}
+
+.sec-hand{
+
+}
+
+.clock{
+
+}
+
