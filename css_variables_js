@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scoped Css variables and JS</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <h2> Update CSS variables with <span class = 'h1'> JS </span></h2>
+  <div class = 'controls'>
+    <label for ='spacing'> Spacing: </label>
+    <input type ="range" name ='spacing' min ="10" max ="200" value ="10" data-sizing ="px">
+
+    <label for ='blur'> Blur: </label>
+    <input type ="range" name ='blur' min ="0" max ="25" value ="10" data-sizing ="px">
+
+     <label for ='base'> Base: </label>
+    <input type ='color' name = 'base' value = "#ec9b3b">
+  </div>
+
+  <img src= 'https://picsum.photos/300/500'>
+
+<style>
+
+:root {
+  /*note there is no suffix ie no px so we need additional input*/
+  /*above in the data-sizing we set the suffix*/
+  --base: #ec9b3b;
+  --spacing:40px;
+  --blur: 10px;
+}
+
+body{
+  font-size: 40px;
+  background-color: #00818A;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-weight: lighter;
+  color:white;
+}
+
+img{
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+  margin: 40px;
+}
+
+.h1 {
+  color: var(--base);
+}
+
+.controls{
+  margin-bottom: 50px;
+  font-weight: lighter;
+}
+
+</style>
+
+<script>
+  var inputs = document.querySelectorAll('.controls input');
+  function handleUpdate(){
+    const suffix = this.dataset.sizing || '';
+    document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
+    console.log(this.value);
+  }
+  // the below will change on move and let go. We want it to happen when you move rather than just when you let go.
+  inputs.forEach(input => input.addEventListener('change',handleUpdate));
+  // but as you drag the slider no change so we need to listen to the mouse move so it triggers every time.
+  inputs.forEach(input => input.addEventListener('mousemove',handleUpdate));
+</script>
+
+</body>
+</html>
